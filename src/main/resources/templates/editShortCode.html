@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>VAS Smart Technology</title>
+    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Phoenixcoded">
+    <meta name="keywords" content=", Flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="Phoenixcoded">
+    <!-- Favicon icon -->
+    <link rel="icon" th:href="@{../assets/images/favicon.ico}" type="image/x-icon">
+    <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Mada:300,400,500,600,700" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" th:href="@{../assets/plugins/bootstrap/dist/css/bootstrap.min.css}" />
+   <!--  <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap.min.css">-->
+    <!-- themify-icons line icon -->
+   <!-- <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">-->
+      <link rel="stylesheet" th:href="@{../assets/icon/themify-icons/themify-icons.css}" />
+    <!-- ico font -->
+  <!--  <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">-->
+      <link rel="stylesheet" th:href="@{../assets/icon/icofont/css/icofont.css}" />
+    <!-- flag icon framework css -->
+  <!--  <link rel="stylesheet" type="text/css" href="assets/pages/flag-icon/flag-icon.min.css">-->
+      <link rel="stylesheet" th:href="@{../assets/pages/flag-icon/flag-icon.min.css}" />
+    <!-- Menu-Search css -->
+   <!-- <link rel="stylesheet" type="text/css" href="assets/pages/menu-search/css/component.css">-->
+      <link rel="stylesheet" th:href="@{../assets/pages/menu-search/css/component.css}" />
+      
+    <!-- Style.css -->
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css">-->
+      <link rel="stylesheet" th:href="@{../assets/css/style.css}" />
+
+   
+     <link rel="stylesheet" th:href="@{../assets/css/linearicons.css}" />
+   
+     <link rel="stylesheet" th:href="@{../assets/css/simple-line-icons.css}" />
+    
+     <link rel="stylesheet" th:href="@{../assets/css/ionicons.css}" />
+   
+     <link rel="stylesheet" th:href="@{../assets/css/jquery.mCustomScrollbar.css}" />
+
+</head>
+
+<body>
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div></div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+            <nav class="navbar header-navbar pcoded-header" >
+                <div class="navbar-wrapper">
+                    <div class="navbar-logo">
+                        <a class="mobile-menu" id="mobile-collapse" href="#!">
+                        <i class="ti-menu"></i>
+                    </a>
+
+                        <a href="index.html">
+                      <!--   <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />-->
+                          <img class="img-fluid" th:src="@{../assets/images/logo.png}" alt="Theme-Logo" />
+                    </a>
+                        <a class="mobile-options">
+                        <i class="ti-more"></i>
+                    </a>
+                    </div>
+                    <div class="navbar-container container-fluid">
+                        <div>
+                            <ul class="nav-left">
+                                <li>
+                                    <div class="sidebar_toggle"><a href="javascript:void(0)"><i class="ti-menu"></i></a></div>
+                                </li>
+                                <li>
+                                    <a class="main-search morphsearch-search" href="#">
+                                        <!-- themify icon -->
+                                        <i class="ti-search"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#!" onclick="javascript:toggleFullScreen()">
+                                    <i class="ti-fullscreen"></i>
+                                </a>
+                                </li>
+                               
+                            </ul>
+                            <ul class="nav-right">
+                               
+                                <                                <li class="user-profile header-notification">
+                                    <a href="#!">
+                                    <img th:src="@{../assets/images/user.png}" alt="User-Profile-Image">
+                                    <span>Administrateur</span>
+                                    <i class="ti-angle-down"></i>
+                                </a>
+                                    <ul class="show-notification profile-notification">
+                                       
+                                        <li>
+                                            <a href="#!">
+                                              <i class="ti-layout-sidebar-left"></i> Se déconnecter
+                                        </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                   
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    <nav class="pcoded-navbar" >
+                        <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+                        <div class="pcoded-inner-navbar main-menu">
+
+                            <div class="pcoded-navigatio-lavel">Administration</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                  <a th:href="@{/}">
+                                    <span class="pcoded-micon"><i class="ti-dashboard"></i></span>
+                                    <span class="pcoded-mtext">Tableau de bord</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-user"></i></span>
+                                    <span class="pcoded-mtext">Utilisateur</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                    <li class="">
+                                       <a th:href="@{/listUsers}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a th:href="@{/addUser}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                             <li class="pcoded-hasmenu ">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                    <span class="pcoded-mtext">Service / Jeu</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                    <li class="">
+                                       <a th:href="@{/listServices}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a th:href="@{/addService}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                              <li class="pcoded-hasmenu active pcoded-trigger">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-shortcode"></i></span>
+                                    <span class="pcoded-mtext">Numéro Court</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                    <li class="">
+                                       <a th:href="@{/listCodes}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a th:href="@{/addShortCode}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                              <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-key"></i></span>
+                                    <span class="pcoded-mtext">Mot Clé</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                    <li class="">
+                                       <a th:href="@{/affectService}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Affectation Service</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                     <li class=" ">
+                                        <a th:href="@{/listAffect}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste des Affectations</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    
+                                     <li class=" ">
+                                        <a th:href="@{/listKeywords}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste des mots clé</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                            
+                        </ul>
+                        <div class="pcoded-navigatio-lavel">Tirages & Gains</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            
+                            
+                             <li class="pcoded-hasmenu ">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-gift"></i></span>
+                                    <span class="pcoded-mtext">Gain</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                    <li class="">
+                                       <a th:href="@{/listGift}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a th:href="@{/addGift}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                              <li class="pcoded-hasmenu ">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="icofont icofont-sub-listing"></i></span>
+                                    <span class="pcoded-mtext">Détail Tirage</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                    <li class="">
+                                       <a th:href="@{/listDetailTirage}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a th:href="@{/addDetailTirage}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                           
+                        </ul>
+
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                             <a th:href="@{/listParticipants}">
+                                    <span class="pcoded-micon"><i class="icofont icofont-people"></i></span>
+                                    <span class="pcoded-mtext">Liste des participants</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                 <a th:href="@{/listWinners}">
+                                    <span class="pcoded-micon"><i class="icofont icofont-win-trophy"></i></span>
+                                    <span class="pcoded-mtext">Liste des gagnants</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                  <a th:href="@{/Tirage}">
+                                    <span class="pcoded-micon"><i class="ti-ticket"></i></span>
+                                    <span class="pcoded-mtext">Tirage</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        <div class="pcoded-navigatio-lavel">Trace &  Stats</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a th:href="@{/TraceSMS}">
+                                    <span class="pcoded-micon"><i class="ti-files"></i></span>
+                                    <span class="pcoded-mtext">Trace SMS</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                   <a th:href="@{/StatsSMS}">
+                                    <span class="pcoded-micon"><i class="ti-map-alt"></i></span>
+                                    <span class="pcoded-mtext">Statistique SMS</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>-->
+                        
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-bar-chart-alt"></i></span>
+                                    <span class="pcoded-mtext">Statistique SMS</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                    <li class="">
+                                       <a th:href="@{/StatsSMS}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Par Jour</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a th:href="@{/StatsSMSMois}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Par Mois</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                          
+                        </ul>
+                        
+                        
+<div class="pcoded-navigatio-lavel">Revenu & Facture</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            
+                            
+                             <li class="pcoded-hasmenu ">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-announcement"></i></span>
+                                    <span class="pcoded-mtext">Appel Facture</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                    <li class="">
+                                       <a th:href="@{/listInvoicecall}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li class=" ">
+                                        <a th:href="@{/addInvoiceCall}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Créer</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                     </ul>
+
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                               <a th:href="@{/profitClient}">
+                                    <span class="pcoded-micon"><i class="ti-money"></i></span>
+                                    <span class="pcoded-mtext">Partage Revenu</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                       
+                      
+                        <div class="pcoded-navigatio-lavel"></div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a href="">
+                                    <span class="pcoded-micon"></i></span>
+                                    <span class="pcoded-mtext"></span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                       
+                    </div>
+                </nav>
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- Page header start -->
+                                    <div class="page-header">
+                                        <div class="page-header-title">
+                                            <h4>Modifier Numéro Court</h4>
+                                            <!-- <span>Lorem ipsum dolor sit <code>amet</code>, consectetur adipisicing elit</span>-->
+                                        </div>
+                                        <div class="page-header-breadcrumb">
+                                            <ul class="breadcrumb-title">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.html">
+                                <i class="icofont icofont-home"></i>
+                            </a>
+                                                </li>
+                                                <li class="breadcrumb-item"><a href="#!">Numéro Court</a>
+                                                </li>
+                                                <li class="breadcrumb-item"><a href="#!">Modifier</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Page header end -->
+                                    <!-- Page body start -->
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <!-- Basic Form Inputs card start -->
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                       <!-- <h5>Basic Form Inputs</h5>
+                                                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                                                     <div class="card-header-right">
+                                                            <i class="icofont icofont-rounded-down"></i>
+                                                            <i class="icofont icofont-refresh"></i>
+                                                            <i class="icofont icofont-close-circled"></i>
+                                                        </div>-->
+                                                    </div>
+                                                    <div class="card-block">
+                                                       <!-- <h4 class="sub-title">Basic Inputs</h4>-->
+                                                        
+                                                        
+                                                       
+                                                        <form action="#" th:action="@{/saveShortCode}"     th:object="${shortCode}"  method="POST">
+                                                        
+                                                        
+                                                          <!--  <form action="#" >-->
+         <input type="hidden" th:field="*{ShortCodeKy}" />
+                                                           <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Code</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" th:field="*{ShortCodeValue}" class="form-control" placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Prix</label>
+                                                                <div class="col-sm-10">
+                                                                    <input type="text" th:field="*{ShortCodePrix}"   class="form-control" placeholder="">
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Message Par Defaut</label>
+                                                                <div class="col-sm-10">
+                                                                 <textarea rows="5"  th:field="*{ShortCodeDefaultMsg}" cols="5" id="textsms" class="form-control" placeholder=""></textarea>
+                                              
+                                                                </div>
+                                                            </div>
+                                                            
+                                                             <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label"></label>
+                                                                <div class="col-sm-10" id="compteur">0 caractères
+                                                                </div>
+                                                            </div>
+                                                        
+                                                            
+                                                            <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Activation</label>
+                                                                <div class="col-sm-10">
+                                                                     <select name="select" th:field="*{ShortCodeActivate}" class="form-control">
+                                                <option value="true">Activé</option>
+                                                <option value="false">Désactivé</option>
+                                                
+                                            </select>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                             <div class="form-group row">
+                                                                <label class="col-sm-2 col-form-label">Date Obtention</label>
+                                                                <div class="col-sm-10">
+                                                                   <input type="date" th:field="*{ShortCodeDateOp}" >
+                                                            </div>
+                                                            
+                                                            </div>
+                                                            
+                                                             <div class="form-group row justify-content-end">
+                                                              <div class="col-sm-1">
+                                                               <input type="submit" class="btn btn-primary waves-effect waves-light" value="Modifier">
+                                                              </div>
+                                                            </div>
+
+                                                        </form>
+                                                        
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                                <!-- Basic Form Inputs card end -->
+                                        
+                                                <!-- Input Validation card start -->
+                                               <!--  <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>Input Validation</h5>
+                                                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                                                        <div class="card-header-right">
+                                                            <i class="icofont icofont-rounded-down"></i>
+                                                            <i class="icofont icofont-refresh"></i>
+                                                            <i class="icofont icofont-close-circled"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="sub-title">Input Validation</h4>
+                                                        <div class="form-group has-success row">
+                                                            <div class="col-sm-2">
+                                                                <label class="col-form-label" for="inputSuccess1">Input with success</label>
+                                                            </div>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control form-control-success" id="inputSuccess1">
+                                                                <div class="col-form-label">Success! You've done it.</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group has-warning row">
+                                                            <div class="col-sm-2">
+                                                                <label class="col-form-label" for="inputWarning1">Input with warning</label>
+                                                            </div>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control form-control-warning" id="inputWarning1">
+                                                                <div class="col-form-label">Shucks, check the formatting of that and try again.</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group has-danger row">
+                                                            <div class="col-sm-2">
+                                                                <label class="col-form-label" for="inputDanger1">Input with danger</label>
+                                                            </div>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control form-control-danger" id="inputDanger1">
+                                                                <div class="col-form-label">Sorry, that username's taken. Try another?</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+                                                <!-- Input Validation card end -->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Page body end -->
+                                </div>
+                            </div>
+                            <!-- Main-body end -->
+                            <!--<div id="styleSelector">-->
+
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+    </div>
+
+
+
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1>Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="assets/images/browser/chrome.png" alt="Chrome">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="assets/images/browser/firefox.png" alt="Firefox">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="assets/images/browser/opera.png" alt="Opera">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="assets/images/browser/safari.png" alt="Safari">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="assets/images/browser/ie.png" alt="">
+                    <div>IE (9 & above)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+    <!-- Warning Section Ends -->
+    <!-- Required Jquery -->
+    <script type="text/javascript"  th:src="@{../assets/plugins/jquery/dist/jquery.min.js}"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-ui/jquery-ui.min.js" th:src="@{../assets/plugins/jquery-ui/jquery-ui.min.js}"></script>
+    <script type="text/javascript" src="assets/plugins/tether/dist/js/tether.min.js" th:src="@{../assets/plugins/tether/dist/js/tether.min.js}"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/dist/js/bootstrap.min.js" th:src="@{../assets/plugins/bootstrap/dist/js/bootstrap.min.js}"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js" th:src="@{../assets/plugins/jquery-slimscroll/jquery.slimscroll.js}"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="assets/plugins/modernizr/modernizr.js" th:src="@{../assets/plugins/modernizr/modernizr.js}"></script>
+    <script type="text/javascript" src="assets/plugins/modernizr/feature-detects/css-scrollbars.js" th:src="@{../assets/plugins/modernizr/feature-detects/css-scrollbars.js}"></script>
+
+
+    <!-- Color picker js -->
+    <!--<script type="text/javascript" src="assets/plugins/spectrum/spectrum.js"></script>-->
+    <!--<script type="text/javascript" src="assets/plugins/jscolor/jscolor.js"></script>-->
+    <!-- Mini-color js -->
+    <!--<script type="text/javascript" src="assets/plugins/jquery-minicolors/jquery.minicolors.min.js"></script>-->
+
+    <!-- Custom js -->
+    <script type="text/javascript" src="assets/js/script.js" th:src="@{../assets/js/script.js}"></script>
+    <script src="assets/js/pcoded.min.js" th:src="@{../assets/js/pcoded.min.js}"></script>
+    <script src="assets/js/demo-12.js" th:src="@{../assets/js/demo-12.js}"></script>
+    <script src="assets/js/jquery.mCustomScrollbar.concat.min.js" th:src="@{../assets/js/jquery.mCustomScrollbar.concat.min.js}"></script>
+    <script src="assets/js/jquery.mousewheel.min.js" th:src="@{../assets/plugins/modernizr/modernizr.js}"></script>
+    <script>
+        "use strict";
+        $(document).ready(function() {
+
+            // Color picker js start
+            function change_checkbox_color() {
+                $('.color-box .show-box').on('click', function() {
+                    $(".color-box").toggleClass("open");
+                });
+
+                $('.colors-list a').on('click', function() {
+                    var curr_color = $('main').data('checkbox-color');
+                    var color = $(this).data('checkbox-color');
+                    var new_colot = 'checkbox-' + color;
+
+                    $('.rkmd-checkbox .input-checkbox').each(function(i, v) {
+                        var findColor = $(this).hasClass(curr_color);
+
+                        if (findColor) {
+                            $(this).removeClass(curr_color);
+                            $(this).addClass(new_colot);
+                        }
+
+                        $('main').data('checkbox-color', new_colot);
+
+                    });
+                });
+            }
+
+            // Mini-color js start
+            $('.demo').each(function() {
+                $(this).minicolors({
+                    control: $(this).attr('data-control') || 'hue',
+                    defaultValue: $(this).attr('data-defaultValue') || '',
+                    format: $(this).attr('data-format') || 'hex',
+                    keywords: $(this).attr('data-keywords') || '',
+                    inline: $(this).attr('data-inline') === 'true',
+                    letterCase: $(this).attr('data-letterCase') || 'lowercase',
+                    opacity: $(this).attr('data-opacity'),
+                    position: $(this).attr('data-position') || 'bottom left',
+                    swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
+                    change: function(value, opacity) {
+                        if (!value) return;
+                        if (opacity) value += ', ' + opacity;
+                        if (typeof console === 'object') {
+                            console.log(value);
+                        }
+                    },
+                    theme: 'bootstrap'
+                });
+
+            });
+            // Mini-color js ends
+        });
+    </script>
+
+<script>
+    document.getElementById('textsms').addEventListener('keyup', function() {
+        document.getElementById('compteur').innerHTML = textsms.value.length + " caractères";
+    });
+</script>
+
+</body>
+
+</html>

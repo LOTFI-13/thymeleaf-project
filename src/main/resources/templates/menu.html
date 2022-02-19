@@ -1,0 +1,322 @@
+
+<meta charset="utf-8">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<nav class="pcoded-navbar"  th:fragment="nav">
+    
+<div class="sidebar_toggle">
+<a href="#"><i class="icon-close icons"></i></a></div>
+                    <div class="pcoded-inner-navbar main-menu">
+
+                        <div sec:authorize="hasRole('ROLE_ADMIN')" class="pcoded-navigatio-lavel">Administration</div>
+                        <ul sec:authorize="hasRole('ROLE_ADMIN')" class="pcoded-item pcoded-left-item">
+                           <li th:class="${TablBord}">
+                        
+                                  <a th:href="@{/}">
+                                    <span class="pcoded-micon"><i class="ti-dashboard"></i></span>
+                                    <span class="pcoded-mtext">Tableau de bord</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul sec:authorize="hasRole('ROLE_ADMIN')" class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu" th:classappend="${conditionClass}">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-user"></i></span>
+                                    <span class="pcoded-mtext">Utilisateur</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                    <li th:class="${ActiveU1}" >
+                                       <a th:href="@{/listUsers}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li th:class="${ActiveU2}" >
+                                        <a th:href="@{/addUser}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                             <li class="pcoded-hasmenu" th:classappend="${ServiceClass}">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                                    <span class="pcoded-mtext">Service / Jeu</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li th:class="${ActiveSr1}">
+                                       <a th:href="@{/listServices}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li th:class="${ActiveSr2}">
+                                        <a th:href="@{/addService}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                              <li class="pcoded-hasmenu" th:classappend="${CodeClass}">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-shortcode"></i></span>
+                                    <span class="pcoded-mtext">Numéro Court</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu">
+                                    <li th:class="${ActiveN1}" >
+                                       <a th:href="@{/listCodes}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li th:class="${ActiveN2}">
+                                        <a th:href="@{/addShortCode}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                              <li class="pcoded-hasmenu" th:classappend="${KeywordClass}">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-key"></i></span>
+                                    <span class="pcoded-mtext">Mot Clé</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                   <li th:class="${ActiveK1}">
+                                       <a th:href="@{/affectService}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Affectation Service</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li th:class="${ActiveK2}">
+                                        <a th:href="@{/listAffect}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste des Affectations</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    
+                                     <li th:class="${ActiveK3}">
+                                        <a th:href="@{/listKeywords}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste des mots clé</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                            
+                        </ul>
+                        <div class="pcoded-navigatio-lavel">Tirages & Gains</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            
+                            
+                             <li sec:authorize="hasAnyRole('ROLE_AGENT','ROLE_ADMIN')" class="pcoded-hasmenu" th:classappend="${GiftClass}">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-gift"></i></span>
+                                    <span class="pcoded-mtext">Gain</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                  <li th:class="${ActiveG1}">
+                                       <a th:href="@{/listGift}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                    <li th:class="${ActiveG2}">
+                                        <a th:href="@{/addGift}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                              <li sec:authorize="hasAnyRole('ROLE_AGENT','ROLE_ADMIN')" class="pcoded-hasmenu" th:classappend="${DetailClass}">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="icofont icofont-sub-listing"></i></span>
+                                    <span class="pcoded-mtext">Détail Tirage</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                    <li th:class="${ActiveDT1}">
+                                       <a th:href="@{/listDetailTirage}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                     <li th:class="${ActiveDT2}">
+                                        <a th:href="@{/addDetailTirage}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Ajouter</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                           
+                        </ul>
+
+                        <ul sec:authorize="hasAnyRole('ROLE_HUISSIER','ROLE_ADMIN','ROLE_CLIENT', 'ROLE_AGENT')" class="pcoded-item pcoded-left-item">
+                             <li th:class="${ParticipantClass}">
+                             <a th:href="@{/listParticipants}">
+                                    <span class="pcoded-micon"><i class="icofont icofont-people"></i></span>
+                                    <span class="pcoded-mtext">Liste des participants</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                       <ul sec:authorize="hasAnyRole('ROLE_HUISSIER','ROLE_ADMIN','ROLE_CLIENT','ROLE_AGENT')" class="pcoded-item pcoded-left-item">
+                            <li th:class="${GagnantClass}">
+                                 <a th:href="@{/listWinners}">
+                                    <span class="pcoded-micon"><i class="icofont icofont-win-trophy"></i></span>
+                                    <span class="pcoded-mtext">Liste des gagnants</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul sec:authorize="hasRole('ROLE_HUISSIER')" class="pcoded-item pcoded-left-item">
+                            <li th:class="${TirageClass}">
+                                  <a th:href="@{/Tirage}">
+                                    <span class="pcoded-micon"><i class="ti-ticket"></i></span>
+                                    <span class="pcoded-mtext">Tirage</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        <div sec:authorize="hasAnyRole('ROLE_AGENT','ROLE_ADMIN','ROLE_CLIENT')" class="pcoded-navigatio-lavel">Trace &  Stats</div>
+                        <ul sec:authorize="hasAnyRole('ROLE_AGENT','ROLE_ADMIN','ROLE_CLIENT')" class="pcoded-item pcoded-left-item">
+                           <li th:class="${TraceClass}">
+                                <a th:href="@{/TraceSMS}">
+                                    <span class="pcoded-micon"><i class="ti-files"></i></span>
+                                    <span class="pcoded-mtext">Trace SMS</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- <ul class="pcoded-item pcoded-left-item">
+                            <li>
+                                   <a th:href="@{/StatsSMS}">
+                                    <span class="pcoded-micon"><i class="ti-map-alt"></i></span>
+                                    <span class="pcoded-mtext">Statistique SMS</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>-->
+                        
+                        <ul sec:authorize="hasAnyRole('ROLE_AGENT','ROLE_ADMIN','ROLE_CLIENT')"  class="pcoded-item pcoded-left-item">
+                            <li class="pcoded-hasmenu" th:classappend="${StatClass}">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-bar-chart-alt"></i></span>
+                                    <span class="pcoded-mtext">Statistique SMS</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                   <li th:class="${ActiveSts1}">
+                                       <a th:href="@{/StatsSMS}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Par Jour</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                   <li th:class="${ActiveSts2}">
+                                        <a th:href="@{/StatsSMSMois}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Par Mois</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                            
+                          
+                        </ul>
+                        
+                        
+<div sec:authorize="hasAnyRole('ROLE_AGENT','ROLE_ADMIN')" class="pcoded-navigatio-lavel">Revenu & Facture</div>
+                        <ul class="pcoded-item pcoded-left-item">
+                            
+                            
+                             <li sec:authorize="hasAnyRole('ROLE_AGENT','ROLE_ADMIN')" class="pcoded-hasmenu" th:classappend="${FactureClass}">
+                                <a href="javascript:void(0)">
+                                    <span class="pcoded-micon"><i class="ti-announcement"></i></span>
+                                    <span class="pcoded-mtext">Appel à Facture</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                                <ul class="pcoded-submenu ">
+                                   <li th:class="${ActiveAF1}">
+                                       <a th:href="@{/listInvoicecall}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Liste</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                   <li th:class="${ActiveAF2}">
+                                        <a th:href="@{/addInvoiceCall}">
+                                            <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                            <span class="pcoded-mtext">Créer</span>
+                                            <span class="pcoded-mcaret"></span>
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </li>
+                     </ul>
+
+                        <ul sec:authorize="hasAnyRole('ROLE_AGENT','ROLE_ADMIN')" class="pcoded-item pcoded-left-item">
+                            <li th:class="${ProfitClass}">
+                               <a th:href="@{/profitClient}">
+                                    <span class="pcoded-micon"><i class="ti-money"></i></span>
+                                    <span class="pcoded-mtext">Partage Revenu</span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                       
+                      
+                        <div sec:authorize="hasRole('ROLE_ADMIN')" class="pcoded-navigatio-lavel"></div>
+                        <ul sec:authorize="hasRole('ROLE_ADMIN')" class="pcoded-item pcoded-left-item">
+                            <li>
+                                <a href="">
+                                    <span class="pcoded-micon"></i></span>
+                                    <span class="pcoded-mtext"></span>
+                                    <span class="pcoded-mcaret"></span>
+                                </a>
+                            </li>
+                        </ul>
+                       
+                    </div>
+  
+</nav>
+</html>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+ 
+<head>
+    <title>Tirage</title>
+    <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="Phoenixcoded">
+    <meta name="keywords" content=", Flat ui, Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="Phoenixcoded">
+    <!-- Favicon icon -->
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+    <!-- Google font--><link href="https://fonts.googleapis.com/css?family=Mada:300,400,500,600,700" rel="stylesheet">
+    <!-- Required Fremwork -->
+    <link rel="stylesheet" type="text/css" href="assets/plugins/bootstrap/dist/css/bootstrap.min.css">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
+    <!-- flag icon framework css -->
+    <link rel="stylesheet" type="text/css" href="assets/pages/flag-icon/flag-icon.min.css">
+    <!-- Menu-Search css -->
+    <link rel="stylesheet" type="text/css" href="assets/pages/menu-search/css/component.css">
+    <!-- Style.css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/linearicons.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/simple-line-icons.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/ionicons.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+		
+		$('#comboClients').on('change', function(){
+		      var ClientKy = $(this).val();
+		     
+		      var s = '<option value=' + -1 + '>-- Choisir un Service --</option>';
+		      if (ClientKy > 0) {
+		      	$.ajax({
+		        url : 'loadServiceByClient',
+		        data : {"ClientKy" : ClientKy},
+		        success : function(result) {
+		        	var result = JSON.parse(result);
+		        	for (var i = 0; i < result.length; i++) {
+		        		s += '<option value="' + result[i][0] + '">'+ result[i][1]+ '</option>';
+		        	}
+		        	$('#comboServices').html(s);
+		        }
+		       });
+		     }
+		  });
+		
+		$('#comboServices').on('change', function(){
+		      var SrvcLinkKy = $(this).val();
+		     
+		      if (SrvcLinkKy > 0) {
+		      	$.ajax({
+		        url : 'loadDetailService',
+		        data : {"SrvcLinkKy" : SrvcLinkKy},
+		        success : function(result) {
+		        	var result = JSON.parse(result);
+		        	
+		        	  
+                      var s ='<label class="col-sm col-form-label">Date Début</label>';
+		        		s = s+  '<div class="col-sm">';
+		        		s = s+ '<input type="date" name="date_min" id="date_min" value ="' + result[0][0] + '" class="form-control" placeholder="">';
+		        		s = s+ '</div>';
+		        		
+		        		s = s+  '<label class="col-sm col-form-label">Date Fin</label>';
+		        		s = s+  '<div class="col-sm">';
+		        		s = s+ '<input type="date" name="date_max" id="date_max" value="' + result[0][1] + '" class="form-control" placeholder="">';
+		        		s = s+ '</div>';
+		        		
+		        		s = s+  '<label class="col-sm col-form-label">Prix</label>';
+		        		s = s+  '<div class="col-sm">';
+		        		s = s+ '<input type="text" name="prix" id="prix" value="' + result[0][2] + '" class="form-control" placeholder="">';
+		        		s = s+ '</div>';
+		        	
+		        	$('#detail').html(s);
+		        }
+		       });
+		     }
+		  });
+		
+		
+		
+	});
+		
+
+</script>
+
+
+
+</head>
+
+<body>
+    <!-- Pre-loader start -->
+    <div class="theme-loader">
+        <div class="ball-scale">
+            <div></div>
+        </div>
+    </div>
+    <!-- Pre-loader end -->
+
+    <div id="pcoded" class="pcoded">
+        <div class="pcoded-overlay-box"></div>
+        <div class="pcoded-container navbar-wrapper">
+
+              <nav th:replace="header :: nav1">
+        </nav>
+
+
+            <div class="pcoded-main-container">
+                <div class="pcoded-wrapper">
+                    
+                     <nav th:replace="menu :: nav">
+                </nav>
+                    
+                    <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <!-- Main-body start -->
+                            <div class="main-body">
+                                <div class="page-wrapper">
+                                    <!-- Page header start -->
+                                    <div class="page-header">
+                                        <div class="page-header-title">
+                                            <h4>Tirage</h4>
+                                            <!-- <span>Lorem ipsum dolor sit <code>amet</code>, consectetur adipisicing elit</span>-->
+                                        </div>
+                                        <div class="page-header-breadcrumb">
+                                            <ul class="breadcrumb-title">
+                                                <li class="breadcrumb-item">
+                                                    <a href="index.html">
+                                <i class="icofont icofont-home"></i>
+                            </a>
+                                                </li>
+                                                <li class="breadcrumb-item"><a href="#!">Tirage & Gain</a>
+                                                </li>
+                                                <li class="breadcrumb-item"><a href="#!">Tirage</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- Page header end -->
+                                    <!-- Page body start -->
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <!-- Basic Form Inputs card start -->
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                       <!-- <h5>Basic Form Inputs</h5>
+                                                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                                                     <div class="card-header-right">
+                                                            <i class="icofont icofont-rounded-down"></i>
+                                                            <i class="icofont icofont-refresh"></i>
+                                                            <i class="icofont icofont-close-circled"></i>
+                                                        </div>-->
+                                                    </div>
+                                                    <div class="card-block">
+                                                       <!-- <h4 class="sub-title">Basic Inputs</h4>-->
+                                                        
+                                                        
+                                                       
+                                                        <form action="#" th:action="@{/Tirage}" th:object="${forTirage}"  method="POST">
+                                                        
+                                                          <!--  <form action="#" >-->
+                                                          
+                                                          
+                                                          
+                                                            <div class="form-group row">
+                                                            
+                                                                <label class="col-sm col-form-label">Date Début</label>
+                                                                <div class="col-sm">
+                                                                <input type="date" name="date_min" id="date_min" th:value="${#dates.format(forTirage[4], 'yyyy-MM-dd')}" class="form-control" placeholder="">
+                                                                </div>
+                                                                
+                                                                <label class="col-sm col-form-label">Heure Début</label>
+                                                                <div class="col-sm">
+                                                                <input type="time" name="hour_min" id="hour_min" th:value="${#dates.format(forTirage[4], 'hh:mm')}" class="form-control" placeholder="">
+                                                                </div>
+                                                                
+                                                                <label class="col-sm col-form-label">Date Fin</label>
+                                                                <div class="col-sm">
+                                                                <input type="date" name="date_max" id="date_max" th:value="${#dates.format(forTirage[5], 'yyyy-MM-dd')}"
+                                                                 class="form-control" placeholder="">
+                                                                </div>
+                                                                
+                                                                  <label class="col-sm col-form-label">Date Fin</label>
+                                                                <div class="col-sm">
+                                                                <input type="time" name="hour_max" id="hour_max" th:value="${#dates.format(forTirage[5], 'hh:mm')}"
+                                                                 class="form-control" placeholder="">
+                                                                </div>
+                                                                </div>
+                                                                 <div class="form-group row">
+                                                                <label class="col-sm col-form-label">Service</label>
+                                                                <div class="col-sm">
+                                                                <input type="text" name="srvc" disabled id="srvc" th:value="${forTirage[0]}" class="form-control" placeholder="">
+                                                                </div>
+                                                                
+                                                                <label class="col-sm col-form-label">Nombre</label>
+                                                                <div class="col-sm">
+                                                                 <select id="nbTirage" class="form-control">
+                                                                 
+                                                                 <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                 <option value="3">3</option>
+                                                                 
+                                                                 </select>
+                                                                </div>
+                                                                
+                                                                
+                                                            </div>
+                                                                  
+                                                           
+                                                            
+                                                    <div class="form-group row justify-content-end">
+                                                              <div style="display:block; line-height: 70px; width:100%; text-align:center; margin:0 auto;" class="col-sm-6">
+                                                               <input type="button" id="togg1" class="btn btn-primary waves-effect waves-light" onclick="myFunction()" value="Tirage">
+                                                              </div>
+                                                            </div>
+                                                            
+                                                            
+                                                            
+                                                             
+                                                           
+                                                        </form>
+                                                        
+                                                        
+                                                        
+                                                        
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="card" id="d1" style="display:none">
+                                            <div class="card-block table-border-style">
+                                                <div class="table-responsive">
+                                                    <table id="lisTable" class="table table-hover" style="width:100%"  >
+                                                        
+ 
+                                                        
+                                                        
+                                                        <tbody>
+                                                            
+                                                           <tr align="Center"><td><h2>Le numéro tiré est : <span style="color:red">22547627</span></h2></td> </tr>
+                                                           
+                                                          <tr align="Center"><td>
+
+                                                                <a th:href="desctivate" class="btn btn-danger btn-md" onclick="return confirm('Voulez-vous vraiment supprimer ce mot clé ?');">injoignable</a>
+				                                               	<a th:href="@{/addWinner}" class="btn btn-success btn-md">Enregistrer</a>
+					
+                                                                
+                                                           </td> </tr>
+                                                          
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                
+                                                
+                                                <!-- <div class="card">
+                                                 
+                                                    <div class="card-block table-border-style">
+                                                <div class="table-responsive">
+                                                    <table id="lisTable" class="table table-hover"  >
+                                                        <thead>
+                                                            <tr>
+                                                              
+                                                                 <th>Nom Client </th>
+                                                                 
+                                                                <th>Nom Service</th>
+                                                               
+                                                                <th>Période</th>
+                                                                
+                                                                 <th>Nombre Traffic</th>
+                                                                 
+                                                                 <th>Revenu Total</th>
+                                                                 
+                                                                 <th>Revenu Client (75%)</th>
+                                                                 
+                                                                 <th>Revenu Smart (25%)</th>
+                                                                 
+                                                                  <th>Action</th>
+                                                               
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            
+                                                           
+                                                            <tr>
+                                                            <th>Association Tej</th>
+                                                            <td>Vote Miss Tunisie</td>
+                                                            <td>De 01-10-2017 au 31-12-2017</td>
+                                                            <td>30549 SMS</td> 
+                                                            <td>13745,700 DT</td>
+                                                            <td>10309,275</td>
+                                                            <td>3436,425 DT</td>
+                                                            <td><a th:href="ddd" class="btn btn-warning btn-sm" >Exporter PDF</a> </td>
+                                                          
+              
+                </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                                </div>
+                                                
+                                                -->
+                                                <!-- Basic Form Inputs card end -->
+                                        
+                                                <!-- Input Validation card start -->
+                                               <!--  <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>Input Validation</h5>
+                                                        <span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>
+                                                        <div class="card-header-right">
+                                                            <i class="icofont icofont-rounded-down"></i>
+                                                            <i class="icofont icofont-refresh"></i>
+                                                            <i class="icofont icofont-close-circled"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="sub-title">Input Validation</h4>
+                                                        <div class="form-group has-success row">
+                                                            <div class="col-sm-2">
+                                                                <label class="col-form-label" for="inputSuccess1">Input with success</label>
+                                                            </div>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control form-control-success" id="inputSuccess1">
+                                                                <div class="col-form-label">Success! You've done it.</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group has-warning row">
+                                                            <div class="col-sm-2">
+                                                                <label class="col-form-label" for="inputWarning1">Input with warning</label>
+                                                            </div>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control form-control-warning" id="inputWarning1">
+                                                                <div class="col-form-label">Shucks, check the formatting of that and try again.</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group has-danger row">
+                                                            <div class="col-sm-2">
+                                                                <label class="col-form-label" for="inputDanger1">Input with danger</label>
+                                                            </div>
+                                                            <div class="col-sm-10">
+                                                                <input type="text" class="form-control form-control-danger" id="inputDanger1">
+                                                                <div class="col-form-label">Sorry, that username's taken. Try another?</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+                                                <!-- Input Validation card end -->
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Page body end -->
+                                </div>
+                            </div>
+                            <!-- Main-body end -->
+                            <!--<div id="styleSelector">-->
+
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         
+    </div>
+
+
+
+    <!-- Warning Section Starts -->
+    <!-- Older IE warning message -->
+    <!--[if lt IE 9]>
+<div class="ie-warning">
+    <h1>Warning!!</h1>
+    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+    <div class="iew-container">
+        <ul class="iew-download">
+            <li>
+                <a href="http://www.google.com/chrome/">
+                    <img src="assets/images/browser/chrome.png" alt="Chrome">
+                    <div>Chrome</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.mozilla.org/en-US/firefox/new/">
+                    <img src="assets/images/browser/firefox.png" alt="Firefox">
+                    <div>Firefox</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://www.opera.com">
+                    <img src="assets/images/browser/opera.png" alt="Opera">
+                    <div>Opera</div>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.apple.com/safari/">
+                    <img src="assets/images/browser/safari.png" alt="Safari">
+                    <div>Safari</div>
+                </a>
+            </li>
+            <li>
+                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                    <img src="assets/images/browser/ie.png" alt="">
+                    <div>IE (9 & above)</div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <p>Sorry for the inconvenience!</p>
+</div>
+<![endif]-->
+    <!-- Warning Section Ends -->
+    <!-- Required Jquery -->
+    <script type="text/javascript" src="assets/plugins/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/tether/dist/js/tether.min.js"></script>
+    <script type="text/javascript" src="assets/plugins/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- jquery slimscroll js -->
+    <script type="text/javascript" src="assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+    <!-- modernizr js -->
+    <script type="text/javascript" src="assets/plugins/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="assets/plugins/modernizr/feature-detects/css-scrollbars.js"></script>
+
+
+    <!-- Color picker js -->
+    <!--<script type="text/javascript" src="assets/plugins/spectrum/spectrum.js"></script>-->
+    <!--<script type="text/javascript" src="assets/plugins/jscolor/jscolor.js"></script>-->
+    <!-- Mini-color js -->
+    <!--<script type="text/javascript" src="assets/plugins/jquery-minicolors/jquery.minicolors.min.js"></script>-->
+
+    <!-- Custom js -->
+    <script type="text/javascript" src="assets/js/script.js"></script>
+    <script src="assets/js/pcoded.min.js"></script>
+    <script src="assets/js/demo-12.js"></script>
+    <script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="assets/js/jquery.mousewheel.min.js"></script>
+    <script>
+        "use strict";
+        $(document).ready(function() {
+
+            // Color picker js start
+            function change_checkbox_color() {
+                $('.color-box .show-box').on('click', function() {
+                    $(".color-box").toggleClass("open");
+                });
+
+                $('.colors-list a').on('click', function() {
+                    var curr_color = $('main').data('checkbox-color');
+                    var color = $(this).data('checkbox-color');
+                    var new_colot = 'checkbox-' + color;
+
+                    $('.rkmd-checkbox .input-checkbox').each(function(i, v) {
+                        var findColor = $(this).hasClass(curr_color);
+
+                        if (findColor) {
+                            $(this).removeClass(curr_color);
+                            $(this).addClass(new_colot);
+                        }
+
+                        $('main').data('checkbox-color', new_colot);
+
+                    });
+                });
+            }
+
+            // Mini-color js start
+            $('.demo').each(function() {
+                $(this).minicolors({
+                    control: $(this).attr('data-control') || 'hue',
+                    defaultValue: $(this).attr('data-defaultValue') || '',
+                    format: $(this).attr('data-format') || 'hex',
+                    keywords: $(this).attr('data-keywords') || '',
+                    inline: $(this).attr('data-inline') === 'true',
+                    letterCase: $(this).attr('data-letterCase') || 'lowercase',
+                    opacity: $(this).attr('data-opacity'),
+                    position: $(this).attr('data-position') || 'bottom left',
+                    swatches: $(this).attr('data-swatches') ? $(this).attr('data-swatches').split('|') : [],
+                    change: function(value, opacity) {
+                        if (!value) return;
+                        if (opacity) value += ', ' + opacity;
+                        if (typeof console === 'object') {
+                            console.log(value);
+                        }
+                    },
+                    theme: 'bootstrap'
+                });
+
+            });
+            // Mini-color js ends
+        });
+    </script>
+<script>
+    document.getElementById("MoisA").valueAsDate = new Date();
+    
+   
+        function myFunction() 
+        {
+          document.getElementById("d1").style.display = "block";
+        }
+       
+    
+</script>    
+</body>
+
+</html>
